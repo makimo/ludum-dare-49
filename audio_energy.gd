@@ -5,7 +5,7 @@ const FREQ_MAX = 11050.0
 
 const WIDTH = 1024
 const HEIGHT = 200
-const LIMIT = 30 # one in every `limit` samples gets sent
+const LIMIT = 300 # one in every `limit` samples gets sent
 const MIN_DB = 55
 # probably some fourier parameters are fucked up, this coeff makes it good.
 const MAGIC_KITI_NUMBER = 1.07 
@@ -19,7 +19,7 @@ signal audio_volume(value)
 signal audio_pitch(value)
 
 func calc_pitch_from_spec(mags, bin_size):
-	var THRESHOLD = 0.1
+	var THRESHOLD = 0.05
 	# leave only the peaks
 	var max_val = mags.max()
 	for i in range(0, len(mags)):
@@ -42,8 +42,8 @@ func calc_pitch_from_spec(mags, bin_size):
 		if (mags[i] == 0 and island):
 			island = false
 			maxes.append(local_index)
-	#print(maxes)
 	if (len(maxes) >= 1):
+		#print(maxes)
 		return maxes[0] * bin_size
 	#if (len(maxes) > 1):
 	#	return (maxes[1] - maxes[0]) * bin_size
