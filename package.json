@@ -1,0 +1,22 @@
+{
+  "name": "ludum-dare-49",
+  "version": "1.0.0",
+  "description": "This is a demo showing how a spectrum analyzer can be built using Godot.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makimo/ludum-dare-49.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/makimo/ludum-dare-49/issues"
+  },
+  "homepage": "https://github.com/makimo/ludum-dare-49#readme",
+  "devDependencies": {
+    "browser-sync": "^2.27.5"
+  }
+}
