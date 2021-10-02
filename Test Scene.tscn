@@ -10,4 +10,5 @@
 [node name="ReactToAudio" type="Node2D" parent="."]
 script = ExtResource( 2 )
 
+[connection signal="audio_pitch" from="AudioEnergy" to="ReactToAudio" method="_on_AudioEnergy_audio_pitch"]
 [connection signal="audio_volume" from="AudioEnergy" to="ReactToAudio" method="_on_AudioEnergy_audio_volume"]
