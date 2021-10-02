@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://show_spectrum.gd" type="Script" id=1]
+[ext_resource path="res://noisebaroutline.png" type="Texture" id=2]
+[ext_resource path="res://noisebarfill.png" type="Texture" id=3]
 
 [sub_resource type="AudioStreamMicrophone" id=1]
 
@@ -11,3 +13,19 @@ script = ExtResource( 1 )
 stream = SubResource( 1 )
 autoplay = true
 bus = "Record"
+
+[node name="Interface" type="MarginContainer" parent="."]
+anchor_bottom = 1.0
+margin_right = 428.0
+margin_bottom = 907.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NoiseBar" type="TextureProgress" parent="Interface"]
+margin_right = 428.0
+margin_bottom = 907.0
+value = 20.0
+texture_over = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
+fill_mode = 3
