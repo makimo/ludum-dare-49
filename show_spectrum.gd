@@ -8,7 +8,15 @@ const HEIGHT = 100
 
 const MIN_DB = 60
 
+const LOW_THRESHOLD = 60
+const HIGH_THRESHOLD = 80
+const SMOOTHING_SAMPLES = 15
+
+var samples = []
+
 var spectrum
+
+
 
 func _draw():
 	#warning-ignore:integer_division
@@ -26,16 +34,23 @@ func _draw():
 	set_noise_bar_value(max_height)
 	
 func set_noise_bar_value(height):
-	var low_threshold = 60
-	var high_threshold = 80
 	var noise_bar = get_node("Interface/NoiseBar")
-	noise_bar.value = height
-	if (height >= high_threshold):
-		noise_bar.tint_progress = Color(0.8, 0.2, 0.2, 1)
-	elif (height <= low_threshold):
-		noise_bar.tint_progress = Color(0, 0, 0.8, 0.4)
+	samples.pop_front()
+	while (samples.size() < SMOOTHING_SAMPLES):
+		samples.push_back(height)
+
+	var sum = 0
+	for sample in samples:
+		sum += sample
+	var average = sum / SMOOTHING_SAMPLES
+
+	noise_bar.value = average
+	if (height >= HIGH_THRESHOLD):
+		noise_bar.tint_progress = Color(0.7, 0.2, 0.2, 1)
+	elif (height <= LOW_THRESHOLD):
+		noise_bar.tint_progress = Color(0, 0, 0.7, 0.3)
 	else:
-		noise_bar.tint_progress = Color(0, 0.8, 0, 1)
+		noise_bar.tint_progress = Color(0, 0.7, 0, 1)
 
 func _process(_delta):
 	update()
