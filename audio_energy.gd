@@ -5,8 +5,9 @@ const FREQ_MAX = 11050.0
 
 const WIDTH = 1024
 const HEIGHT = 200
-const LIMIT = 300 # one in every `limit` samples gets sent
+const LIMIT = 30 # one in every `limit` samples gets sent
 const MIN_DB = 55
+const MIN_ENERGY = 0.001
 # probably some fourier parameters are fucked up, this coeff makes it good.
 const MAGIC_KITI_NUMBER = 1.07 
 
@@ -73,17 +74,22 @@ func _process(_delta):
 		var energy = clamp((MIN_DB + linear2db(magnitude)) / MIN_DB, 0, 1)
 		mags[i-1] = energy
 		prev_hz = hz
-		#if (energy > pitch_energy):
-		#	pitch = hz
-		#	pitch_energy = energy
+		if (energy > pitch_energy):
+			pitch = hz
+			pitch_energy = energy
 	glob_mags = mags
 	pitch = MAGIC_KITI_NUMBER * calc_pitch_from_spec(mags, FREQ_MAX/VU_COUNT)
 	curr_limit += 1
-	if (curr_limit >= LIMIT):
+	if (final_energy >= MIN_ENERGY and curr_limit >= LIMIT):
 		emit_signal("audio_volume", final_energy)
 		emit_signal("audio_pitch", pitch)
 		curr_limit = 0
 		#update()
 	
 func _ready():
-	spectrum = AudioServer.get_bus_effect_instance(1,0)
+	var bus_index = AudioServer.get_bus_index("Master")
+	spectrum = AudioServer.get_bus_effect_instance(bus_index,0)
+
+
+func _on_Obstacle_end_move() -> void:
+	pass # Replace with function body.

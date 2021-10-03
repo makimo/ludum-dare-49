@@ -1,5 +1,4 @@
 extends KinematicBody
-signal move
 
 # I dont figure it out how to get this vectors from scene
 # and have not to hardcode it
@@ -11,12 +10,10 @@ var speed = 15.0
 var direction = Vector3.ZERO
 
 func change_direction():
-	print(Input.is_action_pressed("move_right"))
 	if Input.is_action_pressed("move_right"):
 		point = right_point
 	elif Input.is_action_pressed("move_left"):
 		point = left_point
-	print(point)
 	if point.distance_to(transform.origin) > 0.05:
 		direction = point - transform.origin
 		direction = direction.normalized() * speed
@@ -26,7 +23,3 @@ func change_direction():
 func _physics_process(delta: float) -> void:
 	change_direction()
 	move_and_slide(direction)
-	
-	if Input.is_action_pressed("move_forward"):
-		emit_signal("move")
-		
