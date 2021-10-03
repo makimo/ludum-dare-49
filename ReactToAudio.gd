@@ -6,3 +6,6 @@ func _ready():
 
 func _on_AudioEnergy_audio_volume(value):
 	print(value)
+	
+func _on_AudioEnergy_audio_pitch(value):
+	print("pitch: %f" % value)
