@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://art/dude.gd" type="Script" id=1]
+[ext_resource path="res://art/dude.tscn" type="PackedScene" id=2]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="dude" parent="." instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.843335, -0.268694, 0.465392, 0, 0.866025, 0.5, -0.537388, -0.421668, 0.73035, 0.759132, 0.762794, 1.66146 )
