@@ -1,24 +1,32 @@
 extends KinematicBody
-export var speed = 14.0
-
 signal move
-var direction = Vector3.ZERO
-var velocity = Vector3.ZERO
 
-func get_direction() -> Vector3:
-	return Vector3(
-		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		0,
-		0
-	)
+# I dont figure it out how to get this vectors from scene
+# and have not to hardcode it
+var left_point = Vector3(-6.353, 0.8, 9.405)
+var right_point = Vector3(-0.743, 0.8, 9.405)
+var point = left_point
+
+var speed = 15.0
+var direction = Vector3.ZERO
+
+func change_direction():
+	print(Input.is_action_pressed("move_right"))
+	if Input.is_action_pressed("move_right"):
+		point = right_point
+	elif Input.is_action_pressed("move_left"):
+		point = left_point
+	print(point)
+	if point.distance_to(transform.origin) > 0.05:
+		direction = point - transform.origin
+		direction = direction.normalized() * speed
+	else:
+		direction = point - transform.origin
 
 func _physics_process(delta: float) -> void:
-	direction = get_direction()
+	change_direction()
+	move_and_slide(direction)
 	
 	if Input.is_action_pressed("move_forward"):
 		emit_signal("move")
-	
-	if direction != Vector3.ZERO:
-		direction = direction.normalized()
-	velocity.x = direction.x * speed
-	velocity = move_and_slide(velocity, Vector3.UP)
+		
