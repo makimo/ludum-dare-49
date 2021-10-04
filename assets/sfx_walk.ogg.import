@@ -11,5 +11,5 @@ dest_files=[ "res://.import/sfx_walk.ogg-52cebd7bd4ffacdc677615b635e88634.oggstr
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
