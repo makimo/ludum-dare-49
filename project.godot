@@ -20,8 +20,14 @@ _global_script_class_icons={
 
 [application]
 
-config/name="The LD49 Game"
-config/description="A game for Ludum Dare 49 by Makimo"
+config/name="Keep talking, and Bob might not die"
+config/description="Meet Sleigh. Bob Sleigh. Special agent on your majesty's secret service. Getting back from a special mission, he got lost in snowy mountains. He has to keep ploughing through the snow and thin ice to survive in this unfriendly landscape. As an obedient employee, Bob strictly follows your voice. Therefore he walks only if you talk to him. Sounds simple? Not really! 
+
+You have to balance your voice and ambient sounds; otherwise, you'll wake up the bear or cause an avalanche. Press \"A\" and \"D\" keys to steer Bob away from lethal obstacles. And for crying out loud: don't let Bob stop, or he will freeze to death. 
+
+Will you succeed without driving everyone crazy with your gibberish or losing your mind in the endless whiteness? Turn on your mic and give yourself a run in the snow.
+
+A game for Ludum Dare 49 by Makimo"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
