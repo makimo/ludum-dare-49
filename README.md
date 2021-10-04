@@ -11,3 +11,15 @@ Check out this demo on the asset library: https://godotengine.org/asset-library/
 ## Screenshots
 
 ![Screenshot](screenshots/spectrum.png)
+
+## Credits
+
+The game used sounds by: 
+
+jorickhoofd (avalanche foley)
+ebcrosby (bear roar)
+julius_galla (hitting trees)
+nsstudios (wind)
+
+from freesound.org
+

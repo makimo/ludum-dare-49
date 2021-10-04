@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_avalanche.ogg-ee110340317c9e2276ef9004d8445e86.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx_avalanche.ogg"
+dest_files=[ "res://.import/sfx_avalanche.ogg-ee110340317c9e2276ef9004d8445e86.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
