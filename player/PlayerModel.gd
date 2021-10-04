@@ -21,7 +21,7 @@ func _ready() -> void:
 	$AnimationPlayer.get_animation("change right").set_loop(true)
 
 func _process(delta: float) -> void:
-	movement = clamp(move_toward(movement, target_movement, delta), 0.0, 1.0)
+	movement = clamp(move_toward(movement, target_movement, delta * (SPEED_UP_MOD if target_movement >= movement else SPEED_DOWN_MOD)), 0.0, 1.0)
 
 	$AnimationTree.set("parameters/movement/blend_position", movement)
 
