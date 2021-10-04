@@ -32,6 +32,7 @@ material/0 = SubResource( 2 )
 [node name="CPUParticles" type="CPUParticles" parent="AvalancheMesh"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0 )
 cast_shadow = 0
+emitting = false
 amount = 128
 lifetime = 3.0
 mesh = SubResource( 4 )
