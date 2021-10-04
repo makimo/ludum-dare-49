@@ -15,7 +15,6 @@ var spectrum
 var curr_limit = 0
 var glob_mags = []
 
-
 signal audio_volume(value)
 signal audio_pitch(value)
 
@@ -63,31 +62,28 @@ func _draw():
 func _process(_delta):
 	var magnitude: float = spectrum.get_magnitude_for_frequency_range(0, 20000).length()
 	var final_energy = clamp((MIN_DB + linear2db(magnitude)) / MIN_DB, 0, 1)
-#	var prev_hz = 0
-#	var pitch = 0
-#	var pitch_energy = 0
-#	var mags = []
-#	mags.resize(VU_COUNT)
-#	for i in range(1, VU_COUNT+1):
-#		var hz = i * FREQ_MAX / VU_COUNT
-#		magnitude = spectrum.get_magnitude_for_frequency_range(prev_hz, hz).length()
-#		var energy = clamp((MIN_DB + linear2db(magnitude)) / MIN_DB, 0, 1)
-#		mags[i-1] = energy
-#		prev_hz = hz
-#		if (energy > pitch_energy):
-#			pitch = hz
-#			pitch_energy = energy
-#	glob_mags = mags
-#	pitch = MAGIC_KITI_NUMBER * calc_pitch_from_spec(mags, FREQ_MAX/VU_COUNT)
-#	curr_limit += 1
-#	if (final_energy >= MIN_ENERGY and curr_limit >= LIMIT):
+	var prev_hz = 0
+	var pitch = 0
+	var pitch_energy = 0
+	var mags = []
+	mags.resize(VU_COUNT)
+	for i in range(1, VU_COUNT+1):
+		var hz = i * FREQ_MAX / VU_COUNT
+		magnitude = spectrum.get_magnitude_for_frequency_range(prev_hz, hz).length()
+		var energy = clamp((MIN_DB + linear2db(magnitude)) / MIN_DB, 0, 1)
+		mags[i-1] = energy
+		prev_hz = hz
+		if (energy > pitch_energy):
+			pitch = hz
+			pitch_energy = energy
+	glob_mags = mags
+	pitch = MAGIC_KITI_NUMBER * calc_pitch_from_spec(mags, FREQ_MAX/VU_COUNT)
+
 	emit_signal("audio_volume", final_energy)
-#		emit_signal("audio_pitch", pitch)
-#		curr_limit = 0
-		#update()
+	emit_signal("audio_pitch", pitch)
 
 func _ready():
-	var bus_index = AudioServer.get_bus_index("Master")
-	spectrum = AudioServer.get_bus_effect_instance(bus_index,0)
+	var bus_index = AudioServer.get_bus_index("SpectrumBus")
+	spectrum = AudioServer.get_bus_effect_instance(bus_index, 0)
 
 
