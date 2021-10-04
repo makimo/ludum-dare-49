@@ -91,5 +91,3 @@ func _ready():
 	spectrum = AudioServer.get_bus_effect_instance(bus_index,0)
 
 
-func _on_Obstacle_end_move() -> void:
-	pass # Replace with function body.

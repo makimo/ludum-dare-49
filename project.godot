@@ -23,6 +23,7 @@ _global_script_class_icons={
 config/name="The LD49 Game"
 config/description="A game for Ludum Dare 49 by Makimo"
 run/main_scene="res://Main.tscn"
+config/icon="res://icon.png"
 
 [audio]
 

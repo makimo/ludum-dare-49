@@ -2,7 +2,7 @@ extends KinematicBody
 class_name Obj_base
 
 var point = Vector3.ZERO
-var speed = 7.0
+var speed = 4.0
 
 func initialize(start_position):
 	translation = start_position
