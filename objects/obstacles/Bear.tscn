@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/bear.glb" type="PackedScene" id=1]
+[ext_resource path="res://objects/obstacles/Bear.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+
+[node name="Bear" type="KinematicBody" groups=[
+"OBS",
+]]
+script = ExtResource( 2 )
+
+[node name="Pivot" type="Spatial" parent="."]
+
+[node name="bear" parent="Pivot" instance=ExtResource( 1 )]
+transform = Transform( 1.40572, -0.00528335, 0.523388, 0.0049873, 1.49999, 0.0017468, -0.523391, 0.000103194, 1.40572, 0, 1.91733, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.695199, 0, 0, 0, 1, 0, 0.886985, 0 )
+shape = SubResource( 1 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.587605, 0, 0, 0, 1.10674, 0, 1, 0 )
