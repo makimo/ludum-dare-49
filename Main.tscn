@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://objects/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://montserrat_extrabold.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://Score.gd" type="Script" id=4]
 [ext_resource path="res://audio_energy.tscn" type="PackedScene" id=5]
 
 [sub_resource type="BoxShape" id=1]
@@ -21,6 +23,18 @@ extents = Vector3( 1, 30, 30 )
 [sub_resource type="SpatialMaterial" id=6]
 
 [sub_resource type="PrismMesh" id=7]
+
+[sub_resource type="DynamicFont" id=8]
+size = 36
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 56
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -121,5 +135,97 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -7 )
 
 [node name="AudioEnergy" parent="." instance=ExtResource( 5 )]
 
+[node name="UserInterface" type="Control" parent="."]
+margin_right = 1027.0
+margin_bottom = 961.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="UserInterface"]
+margin_left = 740.961
+margin_top = 874.399
+margin_right = 1008.96
+margin_bottom = 945.399
+custom_fonts/font = SubResource( 8 )
+text = "Score: 0"
+align = 1
+valign = 1
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Retry" type="ColorRect" parent="UserInterface"]
+visible = false
+margin_left = -30.4126
+margin_top = -36.0
+margin_right = 994.587
+margin_bottom = 920.0
+rect_scale = Vector2( 1.06332, 1.07143 )
+color = Color( 0, 0, 0, 0.447059 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UserInterface/Retry"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -283.5
+margin_top = 165.5
+margin_right = 299.5
+margin_bottom = 410.5
+custom_fonts/font = SubResource( 9 )
+text = "
+Press Enter to retry"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="UserInterface/Retry"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -295.5
+margin_top = -218.5
+margin_right = 287.5
+margin_bottom = 26.5
+custom_fonts/font = SubResource( 9 )
+text = "You were killed by"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="UserInterface/Retry"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -291.5
+margin_top = -22.5
+margin_right = 291.5
+margin_bottom = 222.5
+custom_fonts/font = SubResource( 9 )
+text = "Score: "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KillTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="update_score" from="." to="UserInterface/Score" method="_on_Main_update_score"]
 [connection signal="obstacle_on_way" from="Player" to="." method="_on_Player_obstacle_on_way"]
 [connection signal="audio_volume" from="AudioEnergy" to="." method="_on_AudioEnergy_audio_volume"]
+[connection signal="timeout" from="KillTimer" to="." method="_on_KillTimer_timeout"]
