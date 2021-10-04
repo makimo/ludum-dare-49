@@ -23,6 +23,7 @@ var obstacle_object_step = 0
 signal update_score(value)
 
 onready var player = $Player
+onready var avalanche = $Avalanche
 
 func _ready() -> void:
 	randomize()
@@ -52,7 +53,6 @@ func create_obstacle_object_with_step(step: float) -> void:
 		var obstacle_location = $ObstacleSpawnPoints/LeftPoint if randi() % 2 == 0 else $ObstacleSpawnPoints/RightPoint
 		add_child(obstacle)
 		obstacle.initialize(obstacle_location.translation)
-		obstacle.rotate_y(rand_range(0, 360))
 
 		obstacle_object_step = rand_range(30, 50)
 
@@ -110,7 +110,8 @@ func _on_AudioEnergy_audio_volume(value) -> void:
 	if not end_game:
 		if value >= 0.75:
 			die("avalanche")
-		else:
+			$Avalanche.go()
+		elif value >= 0.05:
 			move_and_generate_objects(value)
 			$KillTimer.stop()
 
