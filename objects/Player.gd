@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_ObstacleDetector_body_entered(body: Node) -> void:
 	emit_signal("obstacle_on_way")
-	
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("move_left"):
 		playerModel.run_change_animation("left")

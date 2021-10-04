@@ -11,7 +11,7 @@ var left_blend = 0
 var right_blend = 0
 
 const SPEED_UP_MOD = 1
-const SPEED_DOWN_MOD = 2
+const SPEED_DOWN_MOD = 0.25
 
 func _ready() -> void:
 	$AnimationPlayer.get_animation("idle").set_loop(true)

@@ -79,11 +79,11 @@ func _process(_delta):
 #			pitch_energy = energy
 #	glob_mags = mags
 #	pitch = MAGIC_KITI_NUMBER * calc_pitch_from_spec(mags, FREQ_MAX/VU_COUNT)
-	curr_limit += 1
-	if (final_energy >= MIN_ENERGY and curr_limit >= LIMIT):
-		emit_signal("audio_volume", final_energy)
+#	curr_limit += 1
+#	if (final_energy >= MIN_ENERGY and curr_limit >= LIMIT):
+	emit_signal("audio_volume", final_energy)
 #		emit_signal("audio_pitch", pitch)
-		curr_limit = 0
+#		curr_limit = 0
 		#update()
 
 func _ready():
