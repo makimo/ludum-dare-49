@@ -1,5 +1,11 @@
 extends Node
 
+var sfx_rock = preload("res://assets/sfx_rock.ogg")
+var sfx_bear = preload("res://assets/sfx_bear.ogg")
+var sfx_avalanche = preload("res://assets/sfx_avalanche.ogg")
+var sfx_tree = preload("res://assets/sfx_tree.ogg")
+var sfx_walk = preload("res://assets/sfx_walk.ogg")
+
 export (PackedScene) var rock_scene = preload("res://objects/obstacles/Rock.tscn")
 export (PackedScene) var log_scene = preload("res://objects/obstacles/Log.tscn")
 export (PackedScene) var bear_scene = preload("res://objects/obstacles/Bear.tscn")
@@ -64,11 +70,24 @@ func get_die_text_color(reason: String) -> Color:
 		'avalanche': return Color8(93, 139, 209, 100)
 		_: return Color8(224, 224, 224, 100)
 
+func get_death_sound(reason):
+	match reason:
+		'bear': return sfx_bear
+		'obstacle': return sfx_rock
+		'avalanche': return sfx_avalanche
+
+func play_death_sound(reason):
+	$AudioPlayer_SFX.stop()
+	$AudioPlayer_SFX.stream = get_death_sound(reason)
+	$AudioPlayer_SFX.play()
+
 func die(reason):
 	if end_game:
 		return
 
 	end_game = true
+
+	play_death_sound(reason)
 
 	$UserInterface/Retry.color = get_die_text_color(reason)
 	$UserInterface/Retry/Label2.text = "You were killed by " + reason

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/sfx_tree.ogg-f393783706df12c255b8a509e1c7ddfd.oggstr
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

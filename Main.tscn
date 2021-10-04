@@ -231,6 +231,9 @@ stream = ExtResource( 6 )
 autoplay = true
 bus = "BGM"
 
+[node name="AudioPlayer_SFX" type="AudioStreamPlayer" parent="."]
+bus = "SFX"
+
 [connection signal="update_score" from="." to="UserInterface/Score" method="_on_Main_update_score"]
 [connection signal="obstacle_on_way" from="Player" to="." method="_on_Player_obstacle_on_way"]
 [connection signal="audio_volume" from="AudioEnergy" to="." method="_on_AudioEnergy_audio_volume"]

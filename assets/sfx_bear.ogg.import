@@ -11,5 +11,5 @@ dest_files=[ "res://.import/sfx_bear.ogg-2a1356034f6b91324df53b301e4d1cb4.oggstr
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
