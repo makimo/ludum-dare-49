@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide(direction)
 
 func _on_ObstacleDetector_body_entered(body: Node) -> void:
-	emit_signal("obstacle_on_way")
+	emit_signal("obstacle_on_way", body.name.to_lower())
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("move_left"):
