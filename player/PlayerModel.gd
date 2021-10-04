@@ -50,3 +50,8 @@ func _on_Timer_timeout() -> void:
 	move_left_enabled = false
 	move_right_enabled = false
 	$Timer.stop()
+
+func play_fall_animation() -> void:
+	$AnimationTree.active = false
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play("fall")

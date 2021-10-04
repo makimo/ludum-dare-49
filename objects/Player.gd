@@ -12,6 +12,9 @@ var direction = Vector3.ZERO
 signal obstacle_on_way
 
 onready var playerModel = $Pivot/PlayerModel
+onready var collisionShape1 = $CollisionShape
+onready var collisionShape2 = $ObstacleDetector/CollisionShape
+onready var obstacleDetector = $ObstacleDetector
 
 func change_direction():
 	if Input.is_action_pressed("move_right"):
@@ -39,3 +42,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func set_target_movement(target_movement: float) -> void:
 	playerModel.target_movement = clamp(target_movement, 0.0, 1.0)
+
+func play_fall_animation() -> void:
+	playerModel.play_fall_animation()
+	collisionShape1.disabled = true
+	collisionShape2.disabled = true
+	obstacleDetector.monitoring = false
