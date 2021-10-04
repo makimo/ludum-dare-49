@@ -78,8 +78,10 @@ func get_death_sound(reason):
 		'avalanche': return sfx_avalanche
 
 func play_death_sound(reason):
+	var death_sound = get_death_sound(reason)
+	death_sound.loop = false
 	$AudioPlayer_SFX.stop()
-	$AudioPlayer_SFX.stream = get_death_sound(reason)
+	$AudioPlayer_SFX.stream = death_sound
 	$AudioPlayer_SFX.play()
 
 func die(reason, name = ""):
@@ -136,7 +138,6 @@ func _process(delta: float) -> void:
 
 func _on_Player_obstacle_on_way(name: String) -> void:
 	die("obstacle", name)
-	print("OBSTACLE - YOU DIE: ", name)
 	player.play_fall_animation()
 	death_by = "obstacle"
 	end_game = true

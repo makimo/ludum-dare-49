@@ -234,6 +234,8 @@ stream = ExtResource( 6 )
 autoplay = true
 
 [node name="AudioPlayer_SFX" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioPlayer_Walk" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 autoplay = true
 
