@@ -7,7 +7,7 @@ const WIDTH = 1024
 const HEIGHT = 200
 const LIMIT = 30 # one in every `limit` samples gets sent
 const MIN_DB = 55
-const MIN_ENERGY = 0.001
+const MIN_ENERGY = 0.0005
 # probably some fourier parameters are fucked up, this coeff makes it good.
 const MAGIC_KITI_NUMBER = 1.07 
 
