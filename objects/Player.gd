@@ -6,7 +6,7 @@ var left_point = Vector3(-6.353, 0.8, 9.405)
 var right_point = Vector3(-0.743, 0.8, 9.405)
 var point = left_point
 
-var speed = 3.0
+var speed = 10.0
 var direction = Vector3.ZERO
 
 signal obstacle_on_way
