@@ -29,7 +29,7 @@ Will you succeed without driving everyone crazy with your gibberish or losing yo
 
 A game for Ludum Dare 49 by Makimo"
 run/main_scene="res://Welcome.tscn"
-config/icon="res://icon.png"
+config/icon="res://cover_image.png"
 
 [audio]
 
