@@ -12596,7 +12596,7 @@ bones/217/enabled = true
 bones/217/bound_children = [  ]
 
 [node name="leftHeelAttachment" type="BoneAttachment" parent="rig/Skeleton"]
-transform = Transform( 1.42492e-06, 1, -1.41952e-05, 1, -1.32807e-06, 1.06096e-05, 7.98702e-06, -1.28411e-05, -1, 0.14729, -1.4656, 0.0137257 )
+transform = Transform( 1.34856e-06, 1, -1.42679e-05, 1, -1.25729e-06, 1.12653e-05, 8.31485e-06, -1.29454e-05, -1, 0.147291, -1.4656, 0.0137244 )
 bone_name = "ORG-heel.02.L"
 
 [node name="snowshoeL" type="MeshInstance" parent="rig/Skeleton/leftHeelAttachment"]
@@ -12605,7 +12605,7 @@ mesh = SubResource( 1 )
 material/0 = null
 
 [node name="rightHeelAttachment" type="BoneAttachment" parent="rig/Skeleton"]
-transform = Transform( -1.2666e-06, -1, -1.39978e-05, 1, -1.20327e-06, -9.77516e-06, 1.00136e-05, -1.29435e-05, 0.999998, -0.250997, -1.44774, -0.179576 )
+transform = Transform( -1.16974e-06, -1, -1.39307e-05, 1, -1.27591e-06, -9.83477e-06, 9.92417e-06, -1.29119e-05, 0.999998, -0.250995, -1.44773, -0.179575 )
 bone_name = "ORG-heel.02.R"
 
 [node name="snowshoeR" type="MeshInstance" parent="rig/Skeleton/rightHeelAttachment"]
@@ -12614,7 +12614,7 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="headAttachment" type="BoneAttachment" parent="rig/Skeleton"]
-transform = Transform( 1.0022, 0.0213836, -0.00314292, 0.0216928, 0.979767, -0.291721, 0.00315349, 0.305912, 0.932264, 0.0370999, 0.541853, 0.355543 )
+transform = Transform( 0.999995, -0.00308025, -1.76951e-08, 0.00292368, 0.949182, -0.314712, 0.000969391, 0.314711, 0.949188, 0.00113724, 0.503464, 0.363295 )
 bone_name = "DEF-spine.006"
 
 [node name="goggles" type="MeshInstance" parent="rig/Skeleton/headAttachment"]
@@ -12726,6 +12726,7 @@ transform = Transform( 0.0319364, -0.999233, 0.0226398, -0.815059, -0.0391471, -
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 15 )
 anim_player = NodePath("../AnimationPlayer")
+active = true
 "parameters/move left blend/blend_amount" = 0.0
 "parameters/move right blend/blend_amount" = 0.0
 parameters/movement/blend_position = 0

@@ -32,7 +32,7 @@ func _draw():
 		draw_rect(Rect2(w * i, HEIGHT - height, w, height), Color.white)
 		prev_hz = hz
 	set_noise_bar_value(max_height)
-	
+
 func set_noise_bar_value(height):
 	var noise_bar = get_node("Interface/NoiseBar")
 	samples.pop_front()

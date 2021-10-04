@@ -19,6 +19,7 @@ func _ready() -> void:
 	$AnimationPlayer.get_animation("slow walk").set_loop(true)
 	$AnimationPlayer.get_animation("change left").set_loop(true)
 	$AnimationPlayer.get_animation("change right").set_loop(true)
+	$AnimationTree.active = true
 
 func _process(delta: float) -> void:
 	movement = clamp(move_toward(movement, target_movement, delta * (SPEED_UP_MOD if target_movement >= movement else SPEED_DOWN_MOD)), 0.0, 1.0)
