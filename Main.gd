@@ -96,7 +96,7 @@ func die(reason, name = ""):
 	$AudioPlayer_Walk.stop()
 
 	$UserInterface/Retry.color = get_die_text_color(reason)
-	$UserInterface/Retry/Label2.text = "You were killed by " + reason
+	$UserInterface/Retry/Label2.text = "Bob was killed by " + reason
 	$UserInterface/Retry/Label3.text = "Score: " + String(score)
 	$UserInterface/Retry.show()
 
