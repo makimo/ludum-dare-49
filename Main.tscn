@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://objects/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://montserrat_extrabold.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://Score.gd" type="Script" id=4]
 [ext_resource path="res://audio_energy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/bgm.ogg" type="AudioStream" id=6]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 30, 1, 30 )
@@ -224,6 +225,11 @@ __meta__ = {
 [node name="KillTimer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
+
+[node name="AudioPlayer_BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+bus = "BGM"
 
 [connection signal="update_score" from="." to="UserInterface/Score" method="_on_Main_update_score"]
 [connection signal="obstacle_on_way" from="Player" to="." method="_on_Player_obstacle_on_way"]
