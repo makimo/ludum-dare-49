@@ -28,7 +28,7 @@ You have to balance your voice and ambient sounds; otherwise, you'll wake up the
 Will you succeed without driving everyone crazy with your gibberish or losing your mind in the endless whiteness? Turn on your mic and give yourself a run in the snow.
 
 A game for Ludum Dare 49 by Makimo"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://Welcome.tscn"
 config/icon="res://icon.png"
 
 [audio]
