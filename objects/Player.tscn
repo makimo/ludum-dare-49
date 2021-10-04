@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://objects/Player.gd" type="Script" id=1]
 [ext_resource path="res://art/dude.glb" type="PackedScene" id=2]
@@ -6,7 +6,13 @@
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.44606, 1.38865, 2.542 )
 
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1, 0.588926, 1 )
+
 [node name="Player" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0172882, 0, 0.100563 )
+collision_layer = 0
+collision_mask = 2
 script = ExtResource( 1 )
 
 [node name="Pivot" type="Spatial" parent="."]
@@ -15,5 +21,15 @@ script = ExtResource( 1 )
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 4.75397, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.120028, 1.39167, -0.28571 )
+transform = Transform( 0.360306, 0, 0, 0, 0.135792, 0, 0, 0, 0.376881, -0.120028, 1.39167, -0.28571 )
 shape = SubResource( 1 )
+
+[node name="ObstacleDetector" type="Area" parent="."]
+transform = Transform( 0.564269, 0, 0, 0, 0.232793, 0, 0, 0, 1.02593, 0, 0.651388, 0 )
+gravity = -32.0
+
+[node name="CollisionShape" type="CollisionShape" parent="ObstacleDetector"]
+transform = Transform( 1, 0, 0, 0, 0.97097, 0, 0, 0, 1.93267, -0.108307, 1.04065, 0.143418 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="ObstacleDetector" to="." method="_on_ObstacleDetector_body_entered"]
