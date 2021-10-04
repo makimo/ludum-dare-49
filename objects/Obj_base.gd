@@ -2,12 +2,12 @@ extends KinematicBody
 class_name Obj_base
 
 var point = Vector3.ZERO
-var speed = 5
+var speed = 7.0
 
 func initialize(start_position):
 	translation = start_position
 	point = start_position
-	
+
 func move(steps):
 	point.z += steps
 
@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 	else:
 		direction = point - transform.origin
 	move_and_slide(direction)
-		
+
 
 func _on_VisibilityNotifier_screen_exited() -> void:
 	queue_free()

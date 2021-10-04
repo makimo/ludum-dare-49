@@ -9,6 +9,8 @@ export var max_background_objects = 20
 var obstacles_scenes = [rock_scene, log_scene]
 var end_game = false
 
+onready var player = $Player
+
 func _ready() -> void:
 	create_obstacle_object(true)
 	randomize()
@@ -20,15 +22,17 @@ func create_obstacle_object(force : bool = false):
 		var obstacle_location = $ObstacleSpawnPoints/LeftPoint if randi() % 2 == 0 else $ObstacleSpawnPoints/RightPoint
 		add_child(obstacle)
 		obstacle.initialize(obstacle_location.translation)
-	
+
 func create_background_object():
 	if randf() > 0.75 and get_tree().get_nodes_in_group("BCK").size() < max_background_objects:
 		var background_obj = background_scene.instance()
 		var obj_location = $BackroundSpawnPoints.get_children()[randi() % $BackroundSpawnPoints.get_child_count()]
 		add_child(background_obj)
 		background_obj.initialize(obj_location.translation)
-		
+
 func _on_AudioEnergy_audio_volume(value) -> void:
+	player.set_target_movement(value)
+
 	value *= 60
 	if value >= 15:
 		end_game = true
@@ -43,4 +47,3 @@ func _on_AudioEnergy_audio_volume(value) -> void:
 func _on_Player_obstacle_on_way() -> void:
 	print("OBSTACLE - YOU DIE")
 	end_game = true
-	

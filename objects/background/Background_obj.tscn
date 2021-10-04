@@ -3,7 +3,7 @@
 [ext_resource path="res://art/Tree_glb.glb" type="PackedScene" id=1]
 [ext_resource path="res://art/Tree.fbx" type="PackedScene" id=2]
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody
 
 var point = Vector3.ZERO
@@ -14,7 +14,7 @@ var speed = 5
 func initialize(start_position):
 	translation = start_position
 	point = start_position
-	
+
 func move(steps):
 	point.z += steps
 
@@ -39,7 +39,7 @@ margin = 0.001
 [node name="Background" type="KinematicBody" groups=[
 "BCK",
 ]]
-script = SubResource( 3 )
+script = SubResource( 1 )
 
 [node name="Pivot" type="Spatial" parent="."]
 
